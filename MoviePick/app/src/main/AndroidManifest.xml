@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.moviepick">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,6 +11,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".ActorDetailsActivity"
+            android:theme="@style/SecondaryTheme"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ActorsListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SecondaryTheme" />
+        <activity
+            android:name=".MovieDetailsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SecondaryTheme" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,9 +35,7 @@
             android:theme="@style/SecondaryTheme" />
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="portrait">
-
-        </activity>
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

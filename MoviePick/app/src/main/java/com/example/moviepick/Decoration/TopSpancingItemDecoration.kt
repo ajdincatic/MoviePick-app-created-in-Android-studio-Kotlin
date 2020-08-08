@@ -1,4 +1,4 @@
-package com.example.moviepick.Model
+package com.example.moviepick.Decoration
 
 import android.graphics.Rect
 import android.view.View

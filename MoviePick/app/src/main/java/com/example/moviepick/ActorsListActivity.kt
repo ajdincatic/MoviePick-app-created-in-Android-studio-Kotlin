@@ -3,48 +3,49 @@ package com.example.moviepick
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.moviepick.Model.DataSource
-import com.example.moviepick.Model.Movie
 import com.example.moviepick.Decoration.TopSpancingItemDecoration
 import com.example.moviepick.Model.Actor
+import com.example.moviepick.Model.DataSource
+import com.example.moviepick.Model.Movie
 import kotlinx.android.synthetic.main.activity_movies_list.*
 
-class MoviesListActivity : AppCompatActivity(), OnItemClickListener {
+class ActorsListActivity : AppCompatActivity(), OnItemClickListener {
 
-    private lateinit var movieAdapter: MovieRecyclerAdapter
+    private lateinit var actorAdapter: ActorRecyclerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_movies_list)
+        setContentView(R.layout.activity_actors_list)
 
         initRecyclerView()
         addDataSet()
     }
 
     private fun addDataSet(){
-        val data = DataSource.initMovies()
-        movieAdapter.submitList(data)
+        val data = DataSource.initActors()
+        actorAdapter.submitList(data)
     }
 
     private fun initRecyclerView(){
         recycler_view.apply {
-            layoutManager = LinearLayoutManager(this@MoviesListActivity)
+            layoutManager = LinearLayoutManager(this@ActorsListActivity)
             val topSpacingDecoration =
                 TopSpancingItemDecoration(30)
             addItemDecoration(topSpacingDecoration)
-            movieAdapter = MovieRecyclerAdapter(this@MoviesListActivity)
-            adapter = movieAdapter
+            actorAdapter = ActorRecyclerAdapter(this@ActorsListActivity)
+            adapter = actorAdapter
         }
     }
 
     override fun onItemClick(item: Movie, position: Int) {
-        val intent = Intent(this, MovieDetailsActivity::class.java)
-        intent.putExtra("MOVIE",item)
-        startActivity(intent)
+        TODO("Not yet implemented")
     }
 
     override fun onItemClick(item: Actor, position: Int) {
-        TODO("Not yet implemented")
+        val intent = Intent(this, ActorDetailsActivity::class.java)
+        intent.putExtra("ACTOR",item)
+        startActivity(intent)
     }
 }

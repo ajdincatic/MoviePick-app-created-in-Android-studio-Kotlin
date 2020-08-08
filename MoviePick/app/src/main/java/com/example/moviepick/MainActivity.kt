@@ -15,5 +15,14 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this,MoviesListActivity::class.java)
             startActivity(intent)
         }
+
+        btnMoviesList.setOnClickListener {
+            val intent = Intent(this,MoviesListActivity::class.java)
+            startActivity(intent)
+        }
+        btnActorsList.setOnClickListener {
+            val intent = Intent(this,ActorsListActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
