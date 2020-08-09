@@ -39,6 +39,14 @@ class DataSource{
                     "Few actors in the world have had a career quite as diverse as Leonardo DiCaprio's. DiCaprio has gone from relatively humble beginnings, as a supporting cast member of the sitcom Growing Pains (1985) and low budget horror movies, such as Critters 3 (1991), to a major teenage heartthrob in the 1990s, as the hunky lead actor in movies such as Romeo +..."
                 )
             )
+            list.add(
+                Actor(
+                    "Kate",
+                    "Winslet",
+                    R.drawable.kate,
+                    "Ask Kate Winslet what she likes about any of her characters, and the word \"ballsy\" is bound to pop up at least once. The British actress has made a point of eschewing straightforward pretty-girl parts in favor of more devilish damsels; as a result, she's built an eclectic resume that runs the gamut from Shakespearean tragedy to modern-day .."
+                )
+            )
             listActors = list
             return list
         }

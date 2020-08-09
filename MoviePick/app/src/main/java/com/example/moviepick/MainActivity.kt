@@ -24,5 +24,9 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this,ActorsListActivity::class.java)
             startActivity(intent)
         }
+        btnAbout.setOnClickListener {
+            val intent = Intent(this,AboutActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
