@@ -155,6 +155,7 @@
                 android:layout_columnWeight="1"
                 android:layout_rowWeight="1"
                 app:cardElevation="6dp"
+                android:id="@+id/btnNewsPlace"
                 app:cardCornerRadius="12dp"
                 android:layout_margin="12dp"
                 android:foreground="?android:attr/selectableItemBackground"
@@ -213,13 +214,13 @@
                     <ImageView
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:src="@drawable/feel">
+                        android:src="@drawable/quote">
                     </ImageView>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="HDYF?"
+                        android:text="Quotes"
                         android:textSize="18sp"
                         android:textColor="@android:color/black"
                         android:layout_marginTop="12dp">

@@ -43,7 +43,6 @@ class MovieRecyclerAdapter(var clickListener: OnItemClickListener) : RecyclerVie
 
         val image:ImageView = itemView.blog_image
         val tite:TextView = itemView.blog_title
-        val description:TextView = itemView.blog_author
 
         fun bind(movie: Movie, action: OnItemClickListener){
             val requestOptions = RequestOptions()
@@ -55,16 +54,10 @@ class MovieRecyclerAdapter(var clickListener: OnItemClickListener) : RecyclerVie
                 .load(movie.image)
                 .into(image)
             tite.text = movie.title
-            description.text = movie.description
 
             itemView.setOnClickListener {
                 action.onItemClick(movie, adapterPosition)
             }
         }
     }
-}
-
-interface OnItemClickListener{
-    fun onItemClick(item:Movie, position: Int)
-    fun onItemClick(item:Actor, position: Int)
 }

@@ -8,19 +8,18 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.example.moviepick.Model.Actor
 import com.example.moviepick.Model.Movie
-import kotlinx.android.synthetic.main.actor_list_item.view.*
+import com.example.moviepick.Model.News
 import kotlinx.android.synthetic.main.movie_list_item.view.*
-import kotlinx.android.synthetic.main.movie_list_item.view.blog_image
+import kotlinx.android.synthetic.main.news_list_item.view.*
 
-class ActorRecyclerAdapter(var clickListener: OnItemClickListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+class NewsRecyclerAdapter(var clickListener: OnItemClickListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
-    private var items: List<Actor> = ArrayList()
+    private var items: List<News> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return ActorViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.actor_list_item, parent, false)
+        return NewsViewHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.news_list_item, parent, false)
         )
     }
 
@@ -30,34 +29,34 @@ class ActorRecyclerAdapter(var clickListener: OnItemClickListener) : RecyclerVie
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder){
-            is ActorViewHolder -> {
+            is NewsViewHolder -> {
                 holder.bind(items[position], clickListener)
             }
         }
     }
 
-    fun submitList(movieList: List<Actor>){
-        items = movieList
+    fun submitList(newsList: List<News>){
+        items = newsList
     }
 
-    class ActorViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+    class NewsViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
 
-        val image: ImageView = itemView.image
-        val name: TextView = itemView.txtName
+        val image: ImageView = itemView.newsImage
+        val tite: TextView = itemView.newsTitle
 
-        fun bind(actor: Actor, action: OnItemClickListener){
+        fun bind(news: News, action: OnItemClickListener){
             val requestOptions = RequestOptions()
                 .placeholder(R.drawable.ic_launcher_background)
                 .error(R.drawable.ic_launcher_background)
 
             Glide.with(itemView.context)
                 .applyDefaultRequestOptions(requestOptions)
-                .load(actor.image)
+                .load(news.image)
                 .into(image)
-            name.text = """${actor.firstName} ${actor.lastName}"""
+            tite.text = news.title
 
             itemView.setOnClickListener {
-                action.onItemClick(actor, adapterPosition)
+                action.onItemClick(news, adapterPosition)
             }
         }
     }

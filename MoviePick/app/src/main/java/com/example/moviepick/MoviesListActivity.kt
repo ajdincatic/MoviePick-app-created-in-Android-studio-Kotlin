@@ -8,6 +8,7 @@ import com.example.moviepick.Model.DataSource
 import com.example.moviepick.Model.Movie
 import com.example.moviepick.Decoration.TopSpancingItemDecoration
 import com.example.moviepick.Model.Actor
+import com.example.moviepick.Model.News
 import kotlinx.android.synthetic.main.activity_movies_list.*
 
 class MoviesListActivity : AppCompatActivity(), OnItemClickListener {
@@ -45,6 +46,10 @@ class MoviesListActivity : AppCompatActivity(), OnItemClickListener {
     }
 
     override fun onItemClick(item: Actor, position: Int) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onItemClick(item: News, position: Int) {
         TODO("Not yet implemented")
     }
 }

@@ -28,5 +28,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this,AboutActivity::class.java)
             startActivity(intent)
         }
+
+        btnNewsPlace.setOnClickListener {
+            val intent = Intent(this,NewsListActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
