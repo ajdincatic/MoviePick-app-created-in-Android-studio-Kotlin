@@ -34,7 +34,7 @@ class NewsListActivity : AppCompatActivity(),
         recycler_view.apply {
             layoutManager = LinearLayoutManager(this@NewsListActivity)
             val topSpacingDecoration =
-                TopSpancingItemDecoration(30)
+                TopSpancingItemDecoration(15)
             addItemDecoration(topSpacingDecoration)
             newsAdapter = NewsRecyclerAdapter(this@NewsListActivity)
             adapter = newsAdapter

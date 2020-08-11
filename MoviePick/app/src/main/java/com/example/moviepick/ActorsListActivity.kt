@@ -34,7 +34,7 @@ class ActorsListActivity : AppCompatActivity(),
         recycler_view.apply {
             layoutManager = LinearLayoutManager(this@ActorsListActivity)
             val topSpacingDecoration =
-                TopSpancingItemDecoration(30)
+                TopSpancingItemDecoration(15)
             addItemDecoration(topSpacingDecoration)
             actorAdapter = ActorRecyclerAdapter(this@ActorsListActivity)
             adapter = actorAdapter

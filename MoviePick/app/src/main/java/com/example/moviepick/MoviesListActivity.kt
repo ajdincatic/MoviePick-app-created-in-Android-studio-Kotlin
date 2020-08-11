@@ -34,7 +34,7 @@ class MoviesListActivity : AppCompatActivity(),
         recycler_view.apply {
             layoutManager = LinearLayoutManager(this@MoviesListActivity)
             val topSpacingDecoration =
-                TopSpancingItemDecoration(30)
+                TopSpancingItemDecoration(15)
             addItemDecoration(topSpacingDecoration)
             movieAdapter = MovieRecyclerAdapter(this@MoviesListActivity)
             adapter = movieAdapter
