@@ -64,5 +64,19 @@ class DataSource{
             )
             return list
         }
+
+        fun initUser(): ArrayList<User>{
+            var list = ArrayList<User>()
+            list.add(
+                User(
+                    "Test",
+                    "Test",
+                    "test",
+                    "test"
+                )
+            )
+            return list
+        }
+
     }
 }

@@ -7,11 +7,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.moviepick.Model.DataSource
 import com.example.moviepick.Model.Movie
 import com.example.moviepick.Decoration.TopSpancingItemDecoration
+import com.example.moviepick.Helper.OnItemClickListener
 import com.example.moviepick.Model.Actor
 import com.example.moviepick.Model.News
 import kotlinx.android.synthetic.main.activity_movies_list.*
 
-class MoviesListActivity : AppCompatActivity(), OnItemClickListener {
+class MoviesListActivity : AppCompatActivity(),
+    OnItemClickListener {
 
     private lateinit var movieAdapter: MovieRecyclerAdapter
 

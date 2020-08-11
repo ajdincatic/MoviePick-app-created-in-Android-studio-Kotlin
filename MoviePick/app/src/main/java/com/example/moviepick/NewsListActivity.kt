@@ -5,13 +5,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.moviepick.Decoration.TopSpancingItemDecoration
+import com.example.moviepick.Helper.OnItemClickListener
 import com.example.moviepick.Model.Actor
 import com.example.moviepick.Model.DataSource
 import com.example.moviepick.Model.Movie
 import com.example.moviepick.Model.News
 import kotlinx.android.synthetic.main.activity_movies_list.*
 
-class NewsListActivity : AppCompatActivity(), OnItemClickListener {
+class NewsListActivity : AppCompatActivity(),
+    OnItemClickListener {
 
     private lateinit var newsAdapter: NewsRecyclerAdapter
 

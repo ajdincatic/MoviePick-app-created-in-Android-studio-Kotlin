@@ -18,7 +18,7 @@ class SplashActivity : AppCompatActivity() {
         img.startAnimation(animation)
 
         val r = Runnable {
-            val intent = Intent(this,MainActivity::class.java)
+            val intent = Intent(this,LoginActivity::class.java)
             startActivity(intent)
             finish()
         }

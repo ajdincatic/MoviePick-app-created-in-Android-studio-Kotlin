@@ -8,9 +8,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.example.moviepick.Model.Movie
+import com.example.moviepick.Helper.OnItemClickListener
 import com.example.moviepick.Model.News
-import kotlinx.android.synthetic.main.movie_list_item.view.*
 import kotlinx.android.synthetic.main.news_list_item.view.*
 
 class NewsRecyclerAdapter(var clickListener: OnItemClickListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>(){

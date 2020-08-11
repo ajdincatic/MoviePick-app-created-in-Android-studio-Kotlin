@@ -33,5 +33,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this,NewsListActivity::class.java)
             startActivity(intent)
         }
+
+        btnQuotes.setOnClickListener {
+            val intent = Intent(this,QuoteActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

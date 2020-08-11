@@ -1,4 +1,4 @@
-package com.example.moviepick
+package com.example.moviepick.Helper
 
 import com.example.moviepick.Model.Actor
 import com.example.moviepick.Model.Movie
