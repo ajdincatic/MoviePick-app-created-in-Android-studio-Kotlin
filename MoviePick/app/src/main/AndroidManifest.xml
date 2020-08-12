@@ -19,7 +19,8 @@
         <activity
             android:name=".LoginActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/SecondaryTheme" />
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateVisible"/>
         <activity
             android:name=".NewsDetailsActivity"
             android:screenOrientation="portrait"
@@ -57,6 +58,10 @@
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

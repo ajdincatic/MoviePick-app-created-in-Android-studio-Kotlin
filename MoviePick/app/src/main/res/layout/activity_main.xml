@@ -280,6 +280,7 @@
                 app:cardElevation="6dp"
                 app:cardCornerRadius="12dp"
                 android:layout_margin="12dp"
+                android:id="@+id/btnLogout"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:focusable="true"
                 android:clickable="true"

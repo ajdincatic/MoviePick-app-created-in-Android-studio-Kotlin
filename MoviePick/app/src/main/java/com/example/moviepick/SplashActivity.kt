@@ -1,6 +1,8 @@
 package com.example.moviepick
 
+import android.app.ActivityOptions
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -18,8 +20,15 @@ class SplashActivity : AppCompatActivity() {
         img.startAnimation(animation)
 
         val r = Runnable {
-            val intent = Intent(this,MainActivity::class.java)
-            startActivity(intent)
+            val intent = Intent(this,LoginActivity::class.java)
+
+            val options = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                ActivityOptions.makeSceneTransitionAnimation(this,img,"logo_image")
+            } else {
+                TODO("VERSION.SDK_INT < LOLLIPOP")
+            }
+
+            startActivity(intent,options.toBundle())
             finish()
         }
         Handler().postDelayed(r, 2500)
