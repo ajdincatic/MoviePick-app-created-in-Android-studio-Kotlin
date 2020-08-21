@@ -22,13 +22,13 @@ class SplashActivity : AppCompatActivity() {
         val r = Runnable {
             val intent = Intent(this,LoginActivity::class.java)
 
-            val options = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            /*val options = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 ActivityOptions.makeSceneTransitionAnimation(this,img,"logo_image")
             } else {
-                TODO("VERSION.SDK_INT < LOLLIPOP")
-            }
 
-            startActivity(intent,options.toBundle())
+            }*/
+
+            startActivity(intent/*,options.toBundle()*/)
             finish()
         }
         Handler().postDelayed(r, 2500)
