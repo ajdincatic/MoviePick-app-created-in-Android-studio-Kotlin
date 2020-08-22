@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:text="They may take our lives, but they'll never take our freedom!"
+            tools:text="They may take our lives, but they'll never take our freedom!"
             android:textColor="@android:color/white"
             android:textSize="18sp"
             android:textStyle="bold" />

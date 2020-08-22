@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.moviepick.Model.Posts
+import com.example.moviepick.Model.Quote
 import com.example.moviepick.Services.PostsService
 import com.example.moviepick.Services.APIService
+import com.example.moviepick.Services.QuoteService
 import kotlinx.android.synthetic.main.activity_quote.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -14,7 +16,7 @@ import retrofit2.Response
 
 class QuoteActivity : AppCompatActivity() {
 
-    private val service = APIService.buildService(PostsService::class.java)
+    private val service = APIService.buildService(QuoteService::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,12 +24,11 @@ class QuoteActivity : AppCompatActivity() {
 
         btnAddQuote.setOnClickListener {
             if(txtNewQuote.text!!.isNotEmpty()){
-                val post = Posts()
-                post.title = txtNewQuote.text.toString()
-                post.completed = true
-                post.userId = 1
+                val quote = Quote()
+                quote.quoteText = txtNewQuote.text.toString()
+                quote.movieAndTvshowId = 1
 
-                sendPost(post)
+                sendQuote(quote)
                 Toast.makeText(this,"Quote added.",Toast.LENGTH_SHORT).show()
             }
             else{
@@ -35,34 +36,44 @@ class QuoteActivity : AppCompatActivity() {
             }
         }
 
-        loadPosts()
+        loadQuote()
     }
 
-    private fun loadPosts(){
+    private fun loadQuote(){
         val requestCall = service.getAll()
-        requestCall.enqueue(object :  Callback<List<Posts>>{
-            override fun onFailure(call: Call<List<Posts>>, t: Throwable) {
+        requestCall.enqueue(object :  Callback<List<Quote>>{
+            override fun onFailure(call: Call<List<Quote>>, t: Throwable) {
+                Toast.makeText(this@QuoteActivity,"Error: ${t.toString()}",Toast.LENGTH_SHORT).show()
             }
 
-            override fun onResponse(call: Call<List<Posts>>, response: Response<List<Posts>>) {
+            override fun onResponse(call: Call<List<Quote>>, response: Response<List<Quote>>) {
                 if(response.isSuccessful){
                     val list = response.body()!!
-                    txtHeadQuote.text = list.random().title
+                    txtHeadQuote.text = list.random().quoteText
+                }
+                else if(response.code() == 400){
+                    Toast.makeText(this@QuoteActivity,"401",Toast.LENGTH_SHORT).show()
+                }
+                else{
+                    Toast.makeText(this@QuoteActivity,"Server error",Toast.LENGTH_SHORT).show()
                 }
             }
         })
     }
 
-    private fun sendPost(post: Posts){
-        val requestCall = service.post(post)
-        requestCall.enqueue(object :  Callback<Posts>{
-            override fun onFailure(call: Call<Posts>, t: Throwable) {
+    private fun sendQuote(quote: Quote){
+        val requestCall = service.post(quote)
+        requestCall.enqueue(object :  Callback<Quote>{
+            override fun onFailure(call: Call<Quote>, t: Throwable) {
             }
 
-            override fun onResponse(call: Call<Posts>, response: Response<Posts>) {
+            override fun onResponse(call: Call<Quote>, response: Response<Quote>) {
                 if(response.isSuccessful){
                     val newItem = response.body()!!
-                    txtHeadQuote.text = newItem.title
+                    txtHeadQuote.text = newItem.quoteText
+                }
+                else{
+                    Toast.makeText(this@QuoteActivity,"Server error",Toast.LENGTH_SHORT).show()
                 }
             }
         })

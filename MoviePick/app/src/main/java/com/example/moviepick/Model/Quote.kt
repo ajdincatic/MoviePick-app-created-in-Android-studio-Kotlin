@@ -2,4 +2,7 @@ package com.example.moviepick.Model
 
 import android.text.Editable
 
-class Quote(var quote: String)
+class Quote{
+    var movieAndTvshowId: Int = 0
+    var quoteText: String = ""
+}
