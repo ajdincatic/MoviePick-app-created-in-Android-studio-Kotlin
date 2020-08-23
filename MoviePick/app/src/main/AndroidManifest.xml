@@ -12,15 +12,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".QuoteActivity"
-            android:theme="@style/SecondaryTheme"
+            android:name=".RegisterActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"/>
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateVisible"/>
+        <activity
+            android:name=".QuoteActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SecondaryTheme"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="stateVisible"/>
+            android:windowSoftInputMode="stateVisible" />
         <activity
             android:name=".NewsDetailsActivity"
             android:screenOrientation="portrait"

@@ -29,7 +29,6 @@ class QuoteActivity : AppCompatActivity() {
                 quote.movieAndTvshowId = 1
 
                 sendQuote(quote)
-                Toast.makeText(this,"Quote added.",Toast.LENGTH_SHORT).show()
             }
             else{
                 Toast.makeText(this,"Please insert text.",Toast.LENGTH_SHORT).show()
@@ -71,6 +70,9 @@ class QuoteActivity : AppCompatActivity() {
                 if(response.isSuccessful){
                     val newItem = response.body()!!
                     txtHeadQuote.text = newItem.quoteText
+                }
+                else if(response.code() == 401){
+                    Toast.makeText(this@QuoteActivity,"Unauthorized",Toast.LENGTH_SHORT).show()
                 }
                 else{
                     Toast.makeText(this@QuoteActivity,"Server error",Toast.LENGTH_SHORT).show()

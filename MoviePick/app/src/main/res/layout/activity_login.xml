@@ -23,7 +23,6 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/bungee"
         android:text="Hello, Welcome to MoviePick"
-        android:textColor="#000"
         android:textSize="34sp" />
 
     <TextView
@@ -97,6 +96,10 @@
             />
 
         <Button
+            android:foreground="?android:attr/selectableItemBackground"
+            android:focusable="true"
+            android:clickable="true"
+            android:id="@+id/btnNewAccount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="New user? SIGN UP"

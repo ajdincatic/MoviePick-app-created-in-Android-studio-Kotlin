@@ -7,10 +7,20 @@ import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import com.example.moviepick.Model.DataSource
+import com.example.moviepick.Model.Quote
 import com.example.moviepick.Model.User
+import com.example.moviepick.Services.APIService
+import com.example.moviepick.Services.QuoteService
+import com.example.moviepick.Services.UserService
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_quote.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
+
+    private val service = APIService.buildService(UserService::class.java)
 
     val users = DataSource.initUser()
     var username: TextView? = null
@@ -23,18 +33,36 @@ class LoginActivity : AppCompatActivity() {
 
         btnLogin.setOnClickListener {
             if(txtUsername.text!!.isNotEmpty() || txtPassword.text!!.isNotEmpty()){
-                if(txtUsername.text!!.startsWith("admin") && txtPassword.text!!.startsWith("admin")){
-                    val intent = Intent(this,MainActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                }
-                else{
-                    Toast.makeText(this,"Wrong username or password!",Toast.LENGTH_SHORT).show()
-                }
+                val requestCall = service.get(txtUsername!!.text.toString())
+                requestCall.enqueue(object : Callback<List<User>> {
+                    override fun onFailure(call: Call<List<User>>, t: Throwable) {
+                    }
+
+                    override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
+                        if(response.isSuccessful){
+                            val list = response.body()!!
+                            if(list.count() > 0){
+                                APIService.username = txtUsername!!.text.toString()
+                                APIService.password = txtPassword!!.text.toString()
+                                val intent = Intent(this@LoginActivity,MainActivity::class.java)
+                                startActivity(intent)
+                                finish()
+                            }
+                        }
+                        else{
+                            Toast.makeText(this@LoginActivity,"Server error",Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                })
             }
             else{
                 Toast.makeText(this,"Insert username and password!",Toast.LENGTH_SHORT).show()
             }
+        }
+
+        btnNewAccount.setOnClickListener {
+            val intent = Intent(this,RegisterActivity::class.java)
+            startActivity(intent)
         }
     }
 }
