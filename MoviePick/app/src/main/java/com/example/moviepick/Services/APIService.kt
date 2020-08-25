@@ -1,6 +1,7 @@
 package com.example.moviepick.Services
 
 import android.util.Base64
+import com.example.moviepick.Model.User
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -9,9 +10,10 @@ import retrofit2.create
 import java.util.logging.Logger
 
 object APIService {
-    private const val URL = "https://5fc1b549d808.ngrok.io/api/"
+    private const val URL = "https://8c6278dbdebd.ngrok.io/api/"
     var username: String = ""
     var password: String = ""
+    var loggedUser: User? = null
 
     private val logger = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
 

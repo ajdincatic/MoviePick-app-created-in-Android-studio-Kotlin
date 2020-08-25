@@ -47,6 +47,7 @@
             />
 
             <ImageView
+                android:id="@+id/btnMainProfile"
                 android:layout_height="52dp"
                 android:layout_width="52dp"
                 android:layout_alignParentRight="true"

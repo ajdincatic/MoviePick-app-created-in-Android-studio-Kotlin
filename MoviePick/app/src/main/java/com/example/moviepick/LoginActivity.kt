@@ -44,9 +44,13 @@ class LoginActivity : AppCompatActivity() {
                             if(list.count() > 0){
                                 APIService.username = txtUsername!!.text.toString()
                                 APIService.password = txtPassword!!.text.toString()
+                                APIService.loggedUser = list[0]
                                 val intent = Intent(this@LoginActivity,MainActivity::class.java)
                                 startActivity(intent)
                                 finish()
+                            }
+                            else{
+                                Toast.makeText(this@LoginActivity,"Wrong username or password.",Toast.LENGTH_SHORT).show()
                             }
                         }
                         else{
