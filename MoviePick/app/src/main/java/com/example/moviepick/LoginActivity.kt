@@ -56,6 +56,10 @@ class LoginActivity : AppCompatActivity() {
                         else{
                             Toast.makeText(this@LoginActivity,"Server error",Toast.LENGTH_SHORT).show()
                         }
+                        // for testing login work without server
+                        val intent = Intent(this@LoginActivity,MainActivity::class.java)
+                        startActivity(intent)
+                        finish()
                     }
                 })
             }

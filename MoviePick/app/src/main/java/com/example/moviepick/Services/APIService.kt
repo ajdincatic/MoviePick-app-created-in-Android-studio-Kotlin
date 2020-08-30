@@ -10,7 +10,7 @@ import retrofit2.create
 import java.util.logging.Logger
 
 object APIService {
-    private const val URL = "https://8c6278dbdebd.ngrok.io/api/"
+    private const val URL = " https://fb98fb65dd85.ngrok.io/api/"
     var username: String = ""
     var password: String = ""
     var loggedUser: User? = null
