@@ -6,14 +6,15 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
-import java.util.logging.Logger
+import java.security.SecureRandom
+import javax.net.ssl.*
 
 object APIService {
-    private const val URL = " https://fb98fb65dd85.ngrok.io/api/"
+    private const val URL = " https://moviepick.p1859.app.fit.ba/api/"
     var username: String = ""
     var password: String = ""
     var loggedUser: User? = null
+    var basicAuthHeader: String = ""
 
     private val logger = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
 
@@ -21,14 +22,14 @@ object APIService {
                 .addInterceptor(logger)
                 .addInterceptor{ chain ->
                     val newRequest = chain.request().newBuilder()
-                        .addHeader("Authorization", "Basic " + Base64.encodeToString(("$username:$password").toByteArray(),Base64.NO_WRAP))
+                        .addHeader("Authorization", basicAuthHeader)
                         .build()
                     chain.proceed(newRequest)
                 }
 
     private val builder = Retrofit.Builder().baseUrl(URL)
         .addConverterFactory(GsonConverterFactory.create())
-        .client(okHttp.build())
+        .client(createOkHttpClient())
 
     private val retrofit = builder.build()
 
@@ -36,4 +37,45 @@ object APIService {
         return retrofit.create(serviceType)
     }
 
+    fun setHeader(){
+        basicAuthHeader = "Basic " + Base64.encodeToString(("$username:$password").toByteArray(),Base64.NO_WRAP)
+    }
+
+    private fun createOkHttpClient(): OkHttpClient {
+        return try {
+            val trustAllCerts: Array<TrustManager> = arrayOf(MyManager())
+            val sslContext = SSLContext.getInstance("SSL")
+            sslContext.init(null, trustAllCerts, SecureRandom())
+            val logging = HttpLoggingInterceptor()
+            logging.level = HttpLoggingInterceptor.Level.BODY
+            OkHttpClient.Builder()
+                .sslSocketFactory(sslContext.getSocketFactory())
+                .addInterceptor(logging)
+                .hostnameVerifier { hostname: String?, session: SSLSession? -> true }
+                .build()
+        } catch (e: Exception) {
+            throw RuntimeException(e)
+        }
+    }
+}
+
+class MyManager : X509TrustManager {
+
+    override fun checkServerTrusted(
+        p0: Array<out java.security.cert.X509Certificate>?,
+        p1: String?
+    ) {
+        //allow all
+    }
+
+    override fun checkClientTrusted(
+        p0: Array<out java.security.cert.X509Certificate>?,
+        p1: String?
+    ) {
+        //allow all
+    }
+
+    override fun getAcceptedIssuers(): Array<java.security.cert.X509Certificate> {
+        return arrayOf()
+    }
 }

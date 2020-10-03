@@ -77,14 +77,6 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:text="Forget password?"
-            android:layout_gravity="right"
-            android:elevation="0dp" />
-
-        <Button
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

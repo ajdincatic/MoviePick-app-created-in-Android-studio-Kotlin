@@ -3,9 +3,7 @@ package com.example.moviepick
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.example.moviepick.Model.Posts
 import com.example.moviepick.Model.Quote
-import com.example.moviepick.Services.PostsService
 import com.example.moviepick.Services.APIService
 import com.example.moviepick.Services.QuoteService
 import kotlinx.android.synthetic.main.activity_quote.*
@@ -61,15 +59,17 @@ class QuoteActivity : AppCompatActivity() {
     }
 
     private fun sendQuote(quote: Quote){
-        val requestCall = service.post(quote)
+        val requestCall = service.post(APIService.basicAuthHeader,quote)
         requestCall.enqueue(object :  Callback<Quote>{
             override fun onFailure(call: Call<Quote>, t: Throwable) {
+                Toast.makeText(this@QuoteActivity,"Error: ${t.toString()}",Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(call: Call<Quote>, response: Response<Quote>) {
                 if(response.isSuccessful){
                     val newItem = response.body()!!
                     txtHeadQuote.text = newItem.quoteText
+                    Toast.makeText(this@QuoteActivity,"Quote added.",Toast.LENGTH_SHORT).show()
                 }
                 else if(response.code() == 401){
                     Toast.makeText(this@QuoteActivity,"Unauthorized",Toast.LENGTH_SHORT).show()

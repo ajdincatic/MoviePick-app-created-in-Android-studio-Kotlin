@@ -115,37 +115,6 @@ class DataSource{
             return list
         }
 
-        fun initNews(): ArrayList<News>{
-            var list = ArrayList<News>()
-            list.add(
-                News(
-                    "John Wick 5: Keanu Reeves Already Revealed The Franchise's Best Ending Idea",
-                    R.drawable.jw5,
-                    "Keanu Reeves will return for John Wick 5, which could serve as the final chapter of this franchise, and the star has already revealed the best way to end John's story. The first John Wick movie launched in 2014, but the franchise that the low-budget action film spawned was somewhat unexpected. Despite performing moderately at the box office, John Wick found a growing cult following due to word of mouth.\n" +
-                            "\n" +
-                            "Lionsgate backed John Wick: Chapter 2 and the film performed even better than the first, and John Wick: Chapter 3 - Parabellum capitalized on the growing popularity. The film made \$325 million worldwide on a \$40M budget, which brought the studio to announce John Wick 4 not too long after a franchise-record opening weekend. Chad Stahelski is returning to direct the fourth installment, which was set up at the end of John Wick 3 when John survived a brutal fall and aligned himself with the Bowery King (Laurence Fishburne) to go to war with the High Table."
-                )
-            )
-            list.add(
-                News(
-                    "John Wick 5: Keanu Reeves Already Revealed The Franchise's Best Ending Idea",
-                    R.drawable.jw5,
-                    "Keanu Reeves will return for John Wick 5, which could serve as the final chapter of this franchise, and the star has already revealed the best way to end John's story. The first John Wick movie launched in 2014, but the franchise that the low-budget action film spawned was somewhat unexpected. Despite performing moderately at the box office, John Wick found a growing cult following due to word of mouth.\n" +
-                            "\n" +
-                            "Lionsgate backed John Wick: Chapter 2 and the film performed even better than the first, and John Wick: Chapter 3 - Parabellum capitalized on the growing popularity. The film made \$325 million worldwide on a \$40M budget, which brought the studio to announce John Wick 4 not too long after a franchise-record opening weekend. Chad Stahelski is returning to direct the fourth installment, which was set up at the end of John Wick 3 when John survived a brutal fall and aligned himself with the Bowery King (Laurence Fishburne) to go to war with the High Table."
-                )
-            )
-            list.add(
-                News(
-                    "John Wick 5: Keanu Reeves Already Revealed The Franchise's Best Ending Idea",
-                    R.drawable.jw5,
-                    "Keanu Reeves will return for John Wick 5, which could serve as the final chapter of this franchise, and the star has already revealed the best way to end John's story. The first John Wick movie launched in 2014, but the franchise that the low-budget action film spawned was somewhat unexpected. Despite performing moderately at the box office, John Wick found a growing cult following due to word of mouth.\n" +
-                            "\n" +
-                            "Lionsgate backed John Wick: Chapter 2 and the film performed even better than the first, and John Wick: Chapter 3 - Parabellum capitalized on the growing popularity. The film made \$325 million worldwide on a \$40M budget, which brought the studio to announce John Wick 4 not too long after a franchise-record opening weekend. Chad Stahelski is returning to direct the fourth installment, which was set up at the end of John Wick 3 when John survived a brutal fall and aligned himself with the Bowery King (Laurence Fishburne) to go to war with the High Table."
-                )
-            )
-            return list
-        }
 
         fun initUser(): ArrayList<User>{
             var list = ArrayList<User>()
