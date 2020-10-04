@@ -50,6 +50,7 @@ class MovieDetailsActivity : AppCompatActivity(), OnItemClickListener {
 
     private fun loadActors(){
         val requestCall = service.getAllActors(1,movie.id)
+        Toast.makeText(this@MovieDetailsActivity,"Loading actors...", Toast.LENGTH_SHORT).show()
         requestCall.enqueue(object : Callback<List<MovieCast>> {
             override fun onFailure(call: Call<List<MovieCast>>, t: Throwable) {
                 Toast.makeText(this@MovieDetailsActivity,"Error: ${t.toString()}", Toast.LENGTH_SHORT).show()
