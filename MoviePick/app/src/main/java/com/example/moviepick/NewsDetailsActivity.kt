@@ -32,6 +32,6 @@ class NewsDetailsActivity : AppCompatActivity() {
         var bitmap: Bitmap = BitmapFactory.decodeByteArray(imageByteArray, 0, imageByteArray.size)
         newsDetailsImage.setImageBitmap(bitmap)
 
-        newsDetailsDateTimeAuthor.text = "Date & Time: "+news.dateTimeOfNews + " Author: "+news.author!!.username
+        newsDetailsDateTimeAuthor.text = "Date & Time: "+news.dateTimeOfNews + "\nAuthor: "+news.author!!.username
     }
 }

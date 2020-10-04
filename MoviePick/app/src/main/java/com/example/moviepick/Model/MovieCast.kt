@@ -2,7 +2,6 @@ package com.example.moviepick.Model
 
 import java.io.Serializable
 
-class Actor_Movie(
-    var movie: Movie,
-    var actor: Actor
+class MovieCast(
+    var person: Actor
 ): Serializable

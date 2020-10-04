@@ -1,5 +1,6 @@
 package com.example.moviepick
 
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,8 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.moviepick.Helper.OnItemClickListener
 import com.example.moviepick.Model.Actor
 import kotlinx.android.synthetic.main.actor_list_item.view.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 class ActorRecyclerAdapter(var clickListener: OnItemClickListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
@@ -48,9 +51,15 @@ class ActorRecyclerAdapter(var clickListener: OnItemClickListener) : RecyclerVie
                 .placeholder(R.drawable.ic_launcher_background)
                 .error(R.drawable.ic_launcher_background)
 
+            val imageByteArray: ByteArray = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                Base64.getDecoder().decode(actor.photo)
+            } else {
+                TODO("VERSION.SDK_INT < O")
+            }
+
             Glide.with(itemView.context)
                 .applyDefaultRequestOptions(requestOptions)
-                .load(actor.image)
+                .load(imageByteArray)
                 .into(image)
             name.text = """${actor.firstName} ${actor.lastName}"""
 

@@ -79,4 +79,12 @@ class NewsListActivity : AppCompatActivity(),
         startActivity(intent)
     }
 
+    override fun onItemClick(item: MovieCast, position: Int) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onItemClick(item: ActorCast, position: Int) {
+        TODO("Not yet implemented")
+    }
+
 }

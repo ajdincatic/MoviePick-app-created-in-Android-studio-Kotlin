@@ -10,7 +10,7 @@ import java.security.SecureRandom
 import javax.net.ssl.*
 
 object APIService {
-    private const val URL = " https://moviepick.p1859.app.fit.ba/api/"
+    private const val URL = "https://moviepick.p1859.app.fit.ba/api/"
     var username: String = ""
     var password: String = ""
     var loggedUser: User? = null

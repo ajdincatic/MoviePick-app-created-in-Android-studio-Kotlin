@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
-import com.example.moviepick.Model.DataSource
 import com.example.moviepick.Model.Quote
 import com.example.moviepick.Model.User
 import com.example.moviepick.Services.APIService

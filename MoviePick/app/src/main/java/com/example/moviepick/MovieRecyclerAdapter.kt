@@ -1,5 +1,6 @@
 package com.example.moviepick
 
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,8 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.moviepick.Helper.OnItemClickListener
 import com.example.moviepick.Model.Movie
 import kotlinx.android.synthetic.main.movie_list_item.view.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 class MovieRecyclerAdapter(var clickListener: OnItemClickListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
@@ -41,18 +44,24 @@ class MovieRecyclerAdapter(var clickListener: OnItemClickListener) : RecyclerVie
     class MovieViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
 
         val image:ImageView = itemView.blog_image
-        val tite:TextView = itemView.blog_title
+        val title:TextView = itemView.blog_title
 
         fun bind(movie: Movie, action: OnItemClickListener){
             val requestOptions = RequestOptions()
                 .placeholder(R.drawable.ic_launcher_background)
                 .error(R.drawable.ic_launcher_background)
 
+            val imageByteArray: ByteArray = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                Base64.getDecoder().decode(movie.poster)
+            } else {
+                TODO("VERSION.SDK_INT < O")
+            }
+
             Glide.with(itemView.context)
                 .applyDefaultRequestOptions(requestOptions)
-                .load(movie.image)
+                .load(imageByteArray)
                 .into(image)
-            tite.text = movie.title
+            title.text = movie.title
 
             itemView.setOnClickListener {
                 action.onItemClick(movie, adapterPosition)
